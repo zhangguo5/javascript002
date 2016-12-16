@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>IIFE</title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			(function(exp) {
+				exp(100);
+			}(function(n) {
+				console.log(n);
+				//认为这里有30000代码
+			}));
+
+
+			  
+			  (function(x){console.log(x)}).call(window,888);
+			  (function(x){console.log(x)}).apply(window,[999]);
+			  
+			  /*
+			+function(yourcode) {
+
+				yourcode(window.jQuery, window, document);
+
+			}(function($, window, document) {
+					$(function() {});  //jQueryDOM加载完成事件
+			 });
+			 */
+		</script>
+	</body>
+
+</html>

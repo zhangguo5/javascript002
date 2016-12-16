@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>对象</title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			if(typeof Object.beget !== "function")
+			{
+				Object.create = function(o) {
+					//构造函数，用于创建对象
+					var F = function() {};
+					//指定由构造函数创建的对象的原型
+					F.prototype = o;
+					//调用构造方法创建新对象
+					return new F();
+				}
+			}
+			
+			var rose={
+				name:"rose",
+				show:function(){
+					console.log("姓名："+this.name);
+				}
+			};
+			
+			rose.show();  //输出
+			
+			var lucy=Object.create(rose);  //简单认为是：创建一个对象且继承rose
+			lucy.name="lucy";  //重写
+			
+			var jack=Object.create(rose);
+			jack.name="jack";
+			
+			//修改原型中的方法
+			rose.show=function(){
+				console.log("姓名->"+this.name);
+			}
+			
+			lucy.show();
+			jack.show();
+			
+			//删除属性
+			var mark={
+				name:"mark",
+				show:function(){
+					console.log("姓名："+this.name);
+				}
+			};
+			
+			//封装
+			
+			var name="foo";   //name是全局的，被暴露
+			i=1;  //全局的，没有var关键字声明的变量是全局的，与位置关系不大
+			function show(){  //show 是全局的，被暴露
+				console.log("name->"+name);
+				console.log(++i);
+			}
+			
+			//i是全局的 2
+			show();  
+			//3
+			show();  
+			
+			//对外只暴露bar，使用闭包封装
+			var bar=function(){
+				var i=1;
+				return{
+					name:"bar",
+					show:function(){
+						console.log("name->"+this.name);
+				        console.log(++i);
+					}
+				};
+			};
+			
+			var bar1=bar();
+			//2
+			bar1.show();
+			//3
+			bar1.show();
+			
+			var bar2=bar();
+			//2，因为被封装，且闭包，i是局部私有的
+			bar2.show();
+			
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>函数</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		
+		   /*构造函数*/
+		   function Student(name,age){
+		   	  this.name=name;
+		   	  this.age=age;
+		   }
+		   
+		    show=function(add){
+		   	  	console.log(add+"："+this.name+"，"+this.age);
+		   	}
+		   
+		   //通过new关键字调用构造函数，创建一个对象tom
+		   var rose=new Student("rose",18);
+		   var jack=new Student("jack",20);
+		  
+		  //调用show方法，指定上下文，指定调用对象，this指向rose，“大家好是参数”
+		  show.call(rose,"大家好");
+		  show.call(jack,"Hello");
+		  
+		  var name="无名";
+		  var age=18;
+		  show.call();
+		</script>
+	</body>
+</html>

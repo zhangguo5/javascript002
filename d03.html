@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>对象</title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			//1空对象
+			var obj1 = {};
+
+			//对象中的属性
+			var obj2 = {
+				name: "foo",
+				age: 19
+			};
+			var obj3 = {
+				"nick name": "dog"
+			};
+
+			//对象中的方法
+			var obj4 = {
+				price: 99,
+				inc: function() {
+					this.price += 1;
+				}
+			}
+
+			//2对象中可包含的内容
+			var obj5 = [{
+				name: "jack"
+			}, {
+				name: "lucy",  //常量
+				hobby:["读书","上网","代码"],  //数组
+				friend:{name:"mark",height:198,friend:{}},  //对象
+				show:function(){  //函数
+					console.log("大家好，我是"+this.name);
+				}
+			}];
+			//对象中的this是动态的，指向的是：调用者
+			obj5[1].show();
+			
+			//3取值
+			var obj6={"nick name":"pig",realname:"Rose"};
+			console.log(obj6.realname);
+			//console.log(obj6.nick name);  错误
+			
+			console.log(obj6["realname"]);
+			console.log(obj6["nick name"]);
+			
+			//4 枚举
+			var obj7={weight:"55Kg","nick name":"pig",realname:"Rose"};
+			
+			for (var key in obj7) {
+				console.log(key+"："+obj7[key]);
+			}
+			
+			for(var i=0;i<obj7.length;i++){
+				console.log(i);
+			}
+			
+			//5 添加与更新
+			var obj8={realname:"King"};
+			obj8.realname="Queen";  //修改
+			obj8.weight=1000;  //添加属性
+			obj8.show=function()  //添加方法
+			{
+				console.log(this.realname+"，"+this.weight);
+			}
+			obj8.show();
+			
+			//引用
+			var obj9=obj8;   //obj9指向obj8的引用
+			obj9.realname="Jack";
+			obj8.show();
+		</script>
+	</body>
+
+</html>

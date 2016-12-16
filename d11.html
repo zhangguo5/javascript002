@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>函数</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		//当函数被调用时，它的arguments.callee对象就会指向自身，也就是一个对自己的引用。
+		   function add(n1,n2){
+		   	   console.log(n1+n2);
+		   	   //arguments.callee(n1,n2);  //指向add方法
+		   	   return arguments.callee;
+		   }
+		   
+		   add(1,2)(3,4)(5,6)(7,8)(8,9);
+		   
+		   
+		</script>
+	</body>
+</html>

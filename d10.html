@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>函数</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		function add(n)
+		{
+			console.log("add被调用");
+			if(n<=2){
+				return 1;
+			}
+			return add.caller(n-1)+add.caller(n-2);
+		}
+		
+		function calc(n){
+			console.log("calc被调用");
+			return add(n);
+		}
+		
+		//1 1 2
+		console.log(calc(3));
+		
+		
+		var obj={"name":"bar"}
+		delete obj.name;
+		</script>
+	</body>
+</html>

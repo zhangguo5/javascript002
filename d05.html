@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>函数</title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			function counter(){
+				var sum=0;
+				for(var i=0;i<arguments.length;i++){
+					sum+=arguments[i];
+				}
+				return sum;
+			}
+			
+			console.log(counter(199,991,1,2,3,4,5));
+			console.log(counter());
+			
+			function f1()
+			{
+				console.log(arguments.length);
+				f2=function()
+				{
+					console.log(arguments.length);
+				}
+				return f2;
+			}
+			
+			var f=f1(1,2,3);
+			f();
+		
+			
+		</script>
+	</body>
+
+</html>
